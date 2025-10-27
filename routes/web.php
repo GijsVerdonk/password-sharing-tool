@@ -7,5 +7,3 @@ use App\Http\Controllers\SecretController;
 Route::get('/', function () {
     return Inertia::render('home');
 })->name('home');
-
-Route::get('/secrets', [SecretController::class, 'index']);
