@@ -7,11 +7,6 @@ use App\Models\Secret;
 
 class SecretController extends Controller
 {
-    public function index()
-    {
-        return Secret::all();
-    }
-
     public function store(Request $request)
     {
         try {
@@ -36,11 +31,11 @@ class SecretController extends Controller
 
     public function show($uuid) {
         $secret = Secret::findOrFail($uuid);
+        $secret->delete();
 
         return response()->json([
             'encrypted_body' => $secret->encrypted_body,
-            'message' => 'Encrypted body retrieved successfully',
+            'message' => 'Encrypted body retrieved successfully, and deleted after fetching.',
             ]);
-
     }
 }
