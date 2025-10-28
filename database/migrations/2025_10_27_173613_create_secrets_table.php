@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('secrets', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('encrypted_body');
             $table->integer('uses')->default(0);
             $table->integer('max_uses')->nullable();

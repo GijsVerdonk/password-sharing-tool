@@ -5,7 +5,12 @@ use Inertia\Inertia;
 use App\Http\Controllers\SecretController;
 
 Route::get('/', function () {
-    return Inertia::render('welcome');
+    return Inertia::render('home');
 })->name('home');
 
-Route::get('/secrets', [SecretController::class, 'index']);
+Route::get('/secret/{uuid}/{secretKey}', function ($uuid, $secretKey) {
+    return Inertia::render('secret', [
+        'uuid' => $uuid,
+        'secretKey' => $secretKey,
+    ]);
+});

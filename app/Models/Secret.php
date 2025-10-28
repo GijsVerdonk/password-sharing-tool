@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Secret extends Model
 {
     use HasUuids;
+
+    protected $fillable = ['encrypted_body'];
+
+    public $incrementing = false;
+    protected $keyType = 'string';
 }
